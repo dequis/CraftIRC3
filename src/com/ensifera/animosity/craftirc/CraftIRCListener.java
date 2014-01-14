@@ -22,7 +22,8 @@ final class CraftIRCListener implements Listener {
             String message = null;
             String eventType = null;
             // ACTION/EMOTE can't be claimed, so use onPlayerCommandPreprocess
-            if (split[0].equalsIgnoreCase("/me") && event.getMessage().length() > 4) {
+            if ((split[0].equalsIgnoreCase("/me") && event.getMessage().length() > 4) ||
+                (split[0].equalsIgnoreCase("/mchatme") && event.getMessage().length() > 9)) {
                 eventType = "action";
                 if (!event.getPlayer().hasPermission("bukkit.command.me")) {
                     return;
