@@ -77,6 +77,7 @@ public class RelayedMessage {
 
     public RelayedMessage setField(String key, String value) {
         this.fields.put(key, value);
+        this.fields.put(key + "2", value);
         return this;
     }
 
