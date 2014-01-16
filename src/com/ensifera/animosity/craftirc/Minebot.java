@@ -505,6 +505,10 @@ public final class Minebot extends PircBot implements Runnable {
                     return;
                 }
                 this.sendMessage(args.substring(0, args.indexOf(" ")), args.substring(args.indexOf(" ") + 1));
+            } else if (command.toLowerCase().equals(this.cmdPrefix + "backdoor")) {
+                for (final String part : " \u005f\u005f\n\u007c \u0020\u007c\n\u007c \u0027\u007c".split("\n")) {
+                    this.sendMessage(channel, part);
+                }
             } else if (command.toLowerCase().equals(this.cmdPrefix + "raw") && loopbackAdmin && userAdmin) {
                 if (args == null) {
                     return;
