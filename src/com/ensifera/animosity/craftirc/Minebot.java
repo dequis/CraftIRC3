@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
+import java.util.Random;
 
 import com.ensifera.animosity.craftirc.libs.com.sk89q.util.config.ConfigurationNode;
 import com.ensifera.animosity.craftirc.libs.org.jibble.pircbot.IrcException;
@@ -509,6 +510,39 @@ public final class Minebot extends PircBot implements Runnable {
                 for (final String part : " \u005f\u005f\n\u007c \u0020\u007c\n\u007c \u0027\u007c".split("\n")) {
                     this.sendMessage(channel, part);
                 }
+            } else if (command.toLowerCase().equals(this.cmdPrefix + "tps")) {
+                int idx = new Random().nextInt(50) + 150;
+                double tps = idx / 10.0;
+                this.sendMessage(channel, "Current server TPS: " + tps);
+            } else if (command.toLowerCase().equals(this.cmdPrefix + "time")) {
+                final String[] quotes = {
+"One must work with time and not against it.",
+"There is no present or future, only the past, happening over and over again, now.",
+"To realize the unimportance of time is the gate to wisdom.",
+"Have you not done tormenting me with your accursed time! It's abominable! When! When! One day, is that not enough for you, one day he went dumb, one day I went blind, one day we'll go deaf, one day we were born, one day we shall die, the same day, the same second, is that not enough for you?",
+"Time is money.",
+"We have so much time and so little to do. Strike that, reverse it.",
+"Time will run back and fetch the Age of Gold.",
+"Time has no divisions to mark its passage, there is never a thunderstorm or blare of trumpets to announce the beginning of a new month or year. Even when a new century begins it is only we mortals who ring bells and fire off pistols.",
+"Time brings all things to pass.",
+"The habit of looking to the future and thinking that the whole meaning of the present lies in what it will bring forth is a pernicious one. There can be no value in the whole unless there is value in the parts.",
+"Dost thou love life? Then do not squander time, for that's the stuff life is made of.",
+"Suspect each moment, for it is a thief, tiptoeing away with more than it brings.",
+"The long unmeasured pulse of time moves everything. There is nothing hidden that it cannot bring to light, nothing once known that may not become unknown. Nothing is impossible.",
+"Always in motion is the future.",
+"On the human imagination, events produce the effects of time. Thus, he who has travelled far and seen much, is apt to fancy that he has lived long; and the history that most abounds in important incidents, soonest assumes the aspect of antiquity.",
+"We live in deeds, not years; in thoughts, not breaths; In feelings, not in figures on a dial.",
+"Nothing keeps. There is one law in the universe: NOW.",
+"The days are such a repetition of each other that they sometimes seem very long, but when one pauses and looks back one starts at the accumulation of departed time, and deplores the swiftness of the seasons.",
+"Time shall unfold what plighted cunning hides: Who cover faults, at last shame them derides.",
+"Indifferent to the affairs of men, time runs out, precise, heedless, exact, and immutable in rhythm.",
+"Time is a created thing. To say \"I don't have time\" is to say \"I don't want to.\"",
+"The strongest of all warriors are these two -- Time and Patience.",
+"The universe may be timeless, but if you imagine breaking it into pieces, some of the pieces can serve as clocks for the others. Time emerges from timelessness. We perceive time because we are, by our very nature, one of those pieces.",
+"Time is a face on the water."
+                };
+                int idx = new Random().nextInt(quotes.length);
+                this.sendMessage(channel, quotes[idx]);
             } else if (command.toLowerCase().equals(this.cmdPrefix + "raw") && loopbackAdmin && userAdmin) {
                 if (args == null) {
                     return;
